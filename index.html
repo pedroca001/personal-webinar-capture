@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal 10X - O Fim da Agenda Vazia. Webinário gratuito para personal trainers que querem lotar a agenda sem depender de academia, indicação ou criação de conteúdo." />
+  <title>Personal 10X - O Fim da Agenda Vazia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-soft: #101010;
+      --panel: #141414;
+      --line: #1f1f1f;
+      --line-strong: #333333;
+      --text: #ffffff;
+      --muted: #9ca3af;
+      --accent: #d4ff3d;
+      --accent-2: #c7f046;
+      --cta: #22c55e;
+      --cta-hover: #3be879;
+      --shadow: rgba(212, 255, 61, 0.22);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(135deg, rgba(212, 255, 61, 0.08), transparent 34%),
+        radial-gradient(circle at 85% 18%, rgba(34, 197, 94, 0.14), transparent 28%),
+        linear-gradient(180deg, #080808 0%, #0a0a0a 54%, #050505 100%);
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      content: "";
+      opacity: 0.28;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 82%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      animation: fadeIn 700ms ease both;
+    }
+
+    .top-strip {
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: blur(14px);
+    }
+
+    .top-strip__inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 12px 18px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      width: min(100%, var(--max));
+      flex: 1;
+      gap: 34px;
+      margin: 0 auto;
+      padding: 42px 18px 26px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      min-width: 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      max-width: 100%;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--text);
+      font-size: 0.76rem;
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .brand__mark {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(212, 255, 61, 0.38);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(212, 255, 61, 0.18), rgba(34, 197, 94, 0.06));
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .kicker {
+      display: block;
+      color: var(--muted);
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: clamp(4.25rem, 19vw, 8.4rem);
+      font-weight: 400;
+      line-height: 0.82;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      margin: 0;
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-weight: 400;
+      line-height: 0.78;
+      text-transform: uppercase;
+    }
+
+    .headline__word {
+      display: block;
+      color: var(--accent);
+      font-size: clamp(8.2rem, 35vw, 18rem);
+      text-shadow: 0 0 44px rgba(212, 255, 61, 0.18);
+    }
+
+    .impact {
+      width: 100%;
+      max-width: 720px;
+      margin-top: 28px;
+      padding: 16px 17px;
+      border: 1px solid var(--line-strong);
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(212, 255, 61, 0.13), rgba(20, 20, 20, 0.68));
+      color: var(--text);
+      font-size: clamp(0.95rem, 3.4vw, 1.15rem);
+      font-weight: 900;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .offer {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
+        rgba(12, 12, 12, 0.82);
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.38);
+    }
+
+    .offer__label {
+      display: inline-flex;
+      width: max-content;
+      max-width: 100%;
+      align-items: center;
+      padding: 7px 10px;
+      border: 1px solid rgba(212, 255, 61, 0.26);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 900;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .subheadline {
+      margin: 0;
+      color: #e5e7eb;
+      font-size: clamp(1.05rem, 4vw, 1.3rem);
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .bonus {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 15px;
+      border: 1px solid rgba(212, 255, 61, 0.22);
+      border-radius: 8px;
+      background: rgba(212, 255, 61, 0.08);
+    }
+
+    .bonus__icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(212, 255, 61, 0.16);
+      font-size: 1.22rem;
+    }
+
+    .bonus p {
+      margin: 0;
+      color: var(--text);
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .price {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: baseline;
+      padding-top: 2px;
+    }
+
+    .price__old {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-transform: uppercase;
+    }
+
+    .price__new {
+      color: var(--accent);
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: clamp(3.8rem, 16vw, 6.5rem);
+      font-weight: 400;
+      line-height: 0.82;
+      text-transform: uppercase;
+    }
+
+    .cta {
+      display: inline-flex;
+      width: 100%;
+      min-height: 58px;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 20px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--cta);
+      box-shadow: 0 16px 36px rgba(34, 197, 94, 0.25);
+      color: #020602;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.96rem;
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      background: var(--cta-hover);
+      box-shadow: 0 22px 44px rgba(34, 197, 94, 0.34);
+      transform: translateY(-3px);
+      outline: none;
+    }
+
+    .cta:active {
+      transform: translateY(-1px);
+    }
+
+    .notice {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .footer-line {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 0 18px 22px;
+      color: rgba(255, 255, 255, 0.36);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    @media (min-width: 760px) {
+      .top-strip__inner {
+        padding: 14px 26px;
+        font-size: 0.82rem;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1.24fr) minmax(330px, 0.76fr);
+        gap: 42px;
+        padding: 58px 26px 38px;
+      }
+
+      .offer {
+        padding: 28px;
+      }
+
+      .cta {
+        width: auto;
+      }
+    }
+
+    @media (min-width: 1060px) {
+      .hero {
+        gap: 64px;
+        padding-top: 68px;
+      }
+
+      .offer {
+        position: relative;
+        top: 16px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero {
+        padding-right: 14px;
+        padding-left: 14px;
+      }
+
+      .headline__word {
+        font-size: clamp(7.15rem, 32vw, 8.2rem);
+      }
+
+      .kicker {
+        font-size: clamp(3.6rem, 17vw, 4.25rem);
+      }
+
+      .offer {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="top-strip" aria-label="Informacoes da aula ao vivo">
+      <div class="top-strip__inner">SEGUNDA-FEIRA · 20H · AO VIVO NO MEET</div>
+    </header>
+
+    <section class="hero" aria-labelledby="main-title">
+      <div class="hero-copy">
+        <div class="brand" aria-label="Personal 10X">
+          <span class="brand__mark">10X</span>
+          <span>Personal 10X</span>
+        </div>
+
+        <h1 id="main-title" class="headline">
+          <span class="kicker">O FIM DA</span>
+          <span class="headline__word">AGENDA</span>
+          <span class="headline__word">VAZIA</span>
+        </h1>
+
+        <div class="impact">
+          O personal que não tiver um sistema de captação nos próximos 6 meses estará completamente fora do mercado.
+        </div>
+      </div>
+
+      <aside class="offer" aria-label="Inscricao gratuita no webinario">
+        <span class="offer__label">Webinário gratuito ao vivo</span>
+
+        <p class="subheadline">
+          Em uma aula, você descobre como lotar sua agenda sem depender de academia, sem virar criador de conteúdo e sem ficar refém de indicação.
+        </p>
+
+        <div class="bonus">
+          <span class="bonus__icon" aria-hidden="true">🎁</span>
+          <p>Quem participar ao vivo recebe uma surpresa exclusiva.</p>
+        </div>
+
+        <div class="price" aria-label="Preco da aula">
+          <span class="price__old">DE R$97,00</span>
+          <span class="price__new">POR R$0,00</span>
+        </div>
+
+        <a class="cta" id="ctaButton" href="https://chat.whatsapp.com/JXlIpCdLdNE2Jiv1ktzWku" rel="noopener">
+          GARANTIR MINHA VAGA AGORA →
+        </a>
+
+        <p class="notice">
+          <span aria-hidden="true">🔒</span>
+          <span>Exclusivo para personal trainers e profissionais de educação física.</span>
+        </p>
+      </aside>
+    </section>
+
+    <div class="footer-line">Personal 10X - O Fim da Agenda Vazia</div>
+  </main>
+
+  <script>
+    const ctaButton = document.getElementById("ctaButton");
+    const whatsappGroupUrl = "https://chat.whatsapp.com/JXlIpCdLdNE2Jiv1ktzWku";
+
+    ctaButton.addEventListener("click", function handleCtaClick(event) {
+      event.preventDefault();
+      window.location.href = whatsappGroupUrl;
+    });
+  </script>
+</body>
+</html>
