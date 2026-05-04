@@ -11,15 +11,16 @@
   <style>
     :root {
       --bg: #080808;
-      --panel: #111111;
-      --line: #242424;
+      --panel: rgba(8, 8, 8, 0.68);
+      --panel-strong: rgba(12, 12, 12, 0.82);
+      --line: rgba(255, 107, 24, 0.26);
       --text: #ffffff;
       --muted: #a1a1aa;
       --accent: #ff6b18;
-      --accent-soft: rgba(255, 107, 24, 0.14);
       --cta: #19c47b;
       --cta-hover: #25d98d;
-      --max: 460px;
+      --danger: #ff8960;
+      --max: 1040px;
     }
 
     * {
@@ -36,10 +37,14 @@
       overflow: hidden;
     }
 
-    body {
-      background:
-        radial-gradient(circle at 50% 100%, rgba(255, 107, 24, 0.16), transparent 42%),
-        linear-gradient(180deg, #090909 0%, #070707 100%);
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
     }
 
     a {
@@ -77,9 +82,9 @@
     .page::after {
       z-index: 1;
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.18) 25%, rgba(0, 0, 0, 0.6) 48%, rgba(0, 0, 0, 0.74) 100%),
-        radial-gradient(circle at 50% 32%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.74) 78%),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.56));
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 24%, rgba(0, 0, 0, 0.68) 51%, rgba(0, 0, 0, 0.82) 100%),
+        radial-gradient(circle at 50% 28%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.78) 76%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.72));
     }
 
     .topbar {
@@ -87,31 +92,33 @@
       z-index: 2;
       flex: 0 0 auto;
       border-bottom: 1px solid rgba(255, 107, 24, 0.18);
-      background: rgba(6, 6, 6, 0.7);
+      background: rgba(6, 6, 6, 0.72);
       backdrop-filter: blur(14px);
     }
 
     .topbar__inner {
-      max-width: var(--max);
-      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
       padding: 9px 18px;
       color: var(--muted);
       font-size: 0.66rem;
       font-weight: 900;
       letter-spacing: 0.18em;
       line-height: 1.2;
+      text-align: center;
       text-transform: uppercase;
     }
 
     .topbar__dot {
-      display: inline-block;
       width: 7px;
       height: 7px;
-      margin-right: 9px;
+      flex: 0 0 auto;
       border-radius: 999px;
       background: var(--accent);
       box-shadow: 0 0 16px rgba(255, 107, 24, 0.72);
-      vertical-align: 1px;
     }
 
     .hero {
@@ -121,22 +128,28 @@
       flex: 1;
       min-height: 0;
       place-items: center;
-      padding: 58px 18px 17px;
+      padding: 56px 18px 18px;
     }
 
-    .content {
+    .shell {
+      display: grid;
       width: min(100%, var(--max));
+      gap: 24px;
+      align-items: end;
+    }
+
+    .copy {
       text-align: center;
-      filter: drop-shadow(0 22px 42px rgba(0, 0, 0, 0.56));
+      filter: drop-shadow(0 22px 42px rgba(0, 0, 0, 0.58));
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      margin-bottom: 17px;
+      margin-bottom: 14px;
       color: #d7d7dc;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 900;
       line-height: 1;
       text-transform: uppercase;
@@ -144,13 +157,13 @@
 
     .brand__mark {
       display: grid;
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       place-items: center;
-      border: 1px solid rgba(255, 107, 24, 0.5);
+      border: 1px solid rgba(255, 107, 24, 0.58);
       border-radius: 8px;
       color: var(--accent);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 900;
     }
 
@@ -158,7 +171,7 @@
       margin: 0;
       font-family: "Bebas Neue", Impact, sans-serif;
       font-weight: 400;
-      line-height: 0.86;
+      line-height: 0.84;
       text-transform: uppercase;
     }
 
@@ -167,7 +180,7 @@
       margin-bottom: 5px;
       color: var(--muted);
       font-family: "Inter", Arial, sans-serif;
-      font-size: clamp(0.86rem, 3.6vw, 1.05rem);
+      font-size: clamp(0.78rem, 3.2vw, 1.04rem);
       font-weight: 900;
       letter-spacing: 0.24em;
     }
@@ -175,98 +188,162 @@
     .headline__main {
       display: block;
       color: var(--accent);
-      font-size: clamp(4.7rem, 18vw, 7.2rem);
+      font-size: clamp(4rem, 16vw, 7.4rem);
       letter-spacing: 0;
-      text-shadow: 0 0 28px rgba(255, 107, 24, 0.16);
+      text-shadow: 0 0 28px rgba(255, 107, 24, 0.18);
     }
 
-    .divider {
-      width: 62px;
-      height: 2px;
-      margin: 17px auto 18px;
+    .mini-copy {
+      max-width: 420px;
+      margin: 16px auto 0;
+      color: #d2d2d8;
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .capture-card {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .progress__bar {
+      width: 25%;
+      height: 100%;
       background: var(--accent);
+      transition: width 220ms ease;
     }
 
-    .impact {
-      margin: 0 auto 16px;
-      padding-left: 14px;
-      border-left: 3px solid var(--accent);
+    .form {
+      padding: 18px;
+    }
+
+    .step {
+      display: none;
+      min-height: 245px;
+      animation: stepIn 220ms ease both;
+    }
+
+    .step.is-active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step__eyebrow {
+      margin: 0 0 10px;
       color: var(--accent);
-      font-size: clamp(0.83rem, 3vw, 0.94rem);
+      font-size: 0.7rem;
       font-weight: 900;
-      line-height: 1.42;
-      text-align: left;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .subcopy {
-      max-width: 390px;
-      margin: 0 auto 20px;
-      color: #c6c6cd;
-      font-size: clamp(0.91rem, 3.35vw, 1rem);
-      font-weight: 600;
-      line-height: 1.62;
-      text-align: left;
+    .step__title {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(1.32rem, 5vw, 1.72rem);
+      font-weight: 900;
+      line-height: 1.12;
     }
 
-    .bonus {
+    .step__text {
+      margin: 9px 0 0;
+      color: #c8c8cf;
+      font-size: 0.9rem;
+      font-weight: 650;
+      line-height: 1.5;
+    }
+
+    .field {
+      margin-top: 22px;
+    }
+
+    .input {
+      width: 100%;
+      height: 56px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.46);
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 800;
+      outline: none;
+      padding: 0 15px;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .input:focus {
+      border-color: rgba(255, 107, 24, 0.78);
+      box-shadow: 0 0 0 4px rgba(255, 107, 24, 0.13);
+    }
+
+    .input::placeholder {
+      color: #6f6f77;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .option {
+      position: relative;
       display: flex;
+      min-height: 42px;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.38);
+      color: #ececf0;
+      cursor: pointer;
+      font-size: 0.83rem;
+      font-weight: 800;
+      line-height: 1.2;
+      padding: 10px 12px;
+      transition: background 160ms ease, border-color 160ms ease;
+    }
+
+    .option input {
+      width: 15px;
+      height: 15px;
+      accent-color: var(--accent);
+    }
+
+    .option:has(input:checked) {
+      border-color: rgba(255, 107, 24, 0.82);
+      background: rgba(255, 107, 24, 0.12);
+    }
+
+    .actions {
+      display: flex;
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    .button,
+    .whatsapp-link {
+      display: flex;
+      width: 100%;
       min-height: 54px;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 17px;
-      padding: 12px 15px;
-      border: 1px solid rgba(255, 107, 24, 0.33);
-      border-radius: 8px;
-      background: rgba(10, 10, 10, 0.52);
-      backdrop-filter: blur(10px);
-      color: #e6e6ea;
-      font-size: 0.84rem;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .bonus__icon {
-      color: var(--accent);
-      font-size: 1.05rem;
-      font-weight: 900;
-    }
-
-    .price {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .price__old {
-      color: #68686f;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-decoration: line-through;
-      text-transform: uppercase;
-    }
-
-    .price__new {
-      color: var(--accent);
-      font-size: 1.08rem;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .cta {
-      display: flex;
-      min-height: 58px;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
       border-radius: 10px;
       background: var(--cta);
-      box-shadow: 0 18px 42px rgba(25, 196, 123, 0.22);
+      box-shadow: 0 18px 42px rgba(25, 196, 123, 0.24);
       color: #ffffff;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 900;
       line-height: 1.2;
       text-align: center;
@@ -274,20 +351,56 @@
       transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
     }
 
-    .cta:hover,
-    .cta:focus-visible {
+    .button:hover,
+    .button:focus-visible,
+    .whatsapp-link:hover,
+    .whatsapp-link:focus-visible {
       background: var(--cta-hover);
-      box-shadow: 0 22px 48px rgba(25, 196, 123, 0.32);
+      box-shadow: 0 22px 48px rgba(25, 196, 123, 0.34);
       outline: none;
       transform: translateY(-2px);
     }
 
-    .notice {
-      margin: 13px 0 0;
-      color: #77777f;
-      font-size: 0.7rem;
-      font-weight: 700;
+    .button:disabled {
+      cursor: wait;
+      opacity: 0.72;
+      transform: none;
+    }
+
+    .error {
+      min-height: 18px;
+      margin: 8px 0 0;
+      color: var(--danger);
+      font-size: 0.75rem;
+      font-weight: 800;
       line-height: 1.35;
+    }
+
+    .success {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      margin-bottom: 14px;
+      border: 1px solid rgba(25, 196, 123, 0.5);
+      border-radius: 999px;
+      background: rgba(25, 196, 123, 0.12);
+      color: #4ade80;
+      font-size: 1.4rem;
+      font-weight: 900;
+    }
+
+    .warning {
+      margin: 12px 0 0;
+      color: #f4b28f;
+      font-size: 0.78rem;
+      font-weight: 900;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none !important;
     }
 
     @keyframes fadeIn {
@@ -302,17 +415,43 @@
       }
     }
 
-    @media (min-width: 760px) {
-      :root {
-        --max: 560px;
+    @keyframes stepIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
       }
 
-      .topbar__inner {
-        text-align: center;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
+    @media (min-width: 860px) {
       .hero {
-        padding: 104px 24px 28px;
+        padding: 104px 28px 34px;
+      }
+
+      .shell {
+        grid-template-columns: minmax(0, 1fr) 390px;
+        gap: 56px;
+      }
+
+      .copy {
+        text-align: left;
+      }
+
+      .headline__main {
+        font-size: clamp(6.8rem, 8.8vw, 9.2rem);
+      }
+
+      .mini-copy {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      .capture-card {
+        align-self: center;
       }
 
       .page::before {
@@ -326,109 +465,95 @@
           radial-gradient(circle at 50% 28%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8) 78%),
           linear-gradient(90deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.76));
       }
-
-      .brand {
-        margin-bottom: 20px;
-      }
-
-      .headline__main {
-        font-size: 8.2rem;
-      }
-
-      .impact,
-      .subcopy {
-        text-align: center;
-      }
-
-      .impact {
-        width: min(100%, 500px);
-        padding-left: 0;
-        border-left: 0;
-      }
-
-      .subcopy {
-        max-width: 455px;
-      }
     }
 
-    @media (max-height: 720px) {
+    @media (max-height: 730px) {
       .topbar__inner {
         padding-top: 7px;
         padding-bottom: 7px;
       }
 
       .hero {
-        padding-top: 38px;
+        padding-top: 34px;
         padding-bottom: 10px;
       }
 
       .brand {
-        margin-bottom: 11px;
-      }
-
-      .brand__mark {
-        width: 27px;
-        height: 27px;
+        margin-bottom: 9px;
       }
 
       .headline__main {
-        font-size: clamp(4.15rem, 17vw, 5.1rem);
+        font-size: clamp(3.48rem, 14vw, 4.6rem);
       }
 
-      .divider {
-        margin: 12px auto 13px;
+      .mini-copy {
+        margin-top: 10px;
+        font-size: 0.78rem;
+        line-height: 1.38;
       }
 
-      .impact {
-        margin-bottom: 11px;
-        font-size: 0.77rem;
-        line-height: 1.33;
+      .capture-card {
+        border-radius: 12px;
       }
 
-      .subcopy {
-        margin-bottom: 13px;
-        font-size: 0.82rem;
-        line-height: 1.44;
+      .form {
+        padding: 14px;
       }
 
-      .bonus {
-        min-height: 46px;
-        margin-bottom: 12px;
-        padding: 9px 12px;
-        font-size: 0.77rem;
+      .step {
+        min-height: 232px;
       }
 
-      .price {
-        margin-bottom: 13px;
+      .step__title {
+        font-size: 1.18rem;
       }
 
-      .cta {
-        min-height: 50px;
-        font-size: 0.84rem;
+      .step__text {
+        font-size: 0.78rem;
       }
 
-      .notice {
-        margin-top: 9px;
+      .field {
+        margin-top: 16px;
+      }
+
+      .input {
+        height: 50px;
+      }
+
+      .option {
+        min-height: 38px;
+        font-size: 0.76rem;
+        padding: 8px 10px;
+      }
+
+      .actions {
+        padding-top: 13px;
+      }
+
+      .button,
+      .whatsapp-link {
+        min-height: 48px;
+        font-size: 0.8rem;
       }
     }
 
-    @media (max-width: 370px) {
+    @media (max-width: 390px) {
       .hero {
         padding-right: 15px;
         padding-left: 15px;
       }
 
+      .shell {
+        gap: 18px;
+      }
+
+      .topbar__inner {
+        font-size: 0.58rem;
+        letter-spacing: 0.13em;
+      }
+
       .headline__main {
-        font-size: 4.25rem;
-      }
-
-      .impact,
-      .subcopy {
-        font-size: 0.78rem;
-      }
-
-      .cta {
-        font-size: 0.8rem;
+        font-size: 3.85rem;
       }
     }
   </style>
@@ -437,58 +562,249 @@
   <main class="page">
     <header class="topbar" aria-label="Informações da aula ao vivo">
       <div class="topbar__inner">
-        <span class="topbar__dot" aria-hidden="true"></span>Segunda-feira · 20h · Ao vivo no Meet
+        <span class="topbar__dot" aria-hidden="true"></span>
+        <span>Segunda-feira · 20h · Ao vivo no Meet</span>
       </div>
     </header>
 
     <section class="hero" aria-labelledby="main-title">
-      <div class="content">
-        <div class="brand" aria-label="Personal 10X">
-          <span class="brand__mark">10X</span>
-          <span>Personal 10X</span>
+      <div class="shell">
+        <div class="copy">
+          <div class="brand" aria-label="Personal 10X">
+            <span class="brand__mark">10X</span>
+            <span>Personal 10X</span>
+          </div>
+
+          <h1 id="main-title" class="headline">
+            <span class="headline__top">O fim da</span>
+            <span class="headline__main">Agenda</span>
+            <span class="headline__main">Vazia</span>
+          </h1>
+
+          <p class="mini-copy">
+            Aula gratuita para personal trainers que querem lotar a agenda com um sistema simples de captação.
+          </p>
         </div>
 
-        <h1 id="main-title" class="headline">
-          <span class="headline__top">O fim da</span>
-          <span class="headline__main">Agenda</span>
-          <span class="headline__main">Vazia</span>
-        </h1>
+        <div class="capture-card">
+          <div class="progress" aria-hidden="true">
+            <div class="progress__bar" id="progressBar"></div>
+          </div>
 
-        <div class="divider" aria-hidden="true"></div>
+          <form class="form" name="personal-captura" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="captureForm">
+            <input type="hidden" name="form-name" value="personal-captura" />
+            <p class="hidden">
+              <label>Não preencha este campo: <input name="bot-field" /></label>
+            </p>
 
-        <p class="impact">
-          Pare de depender de academia, indicação ou conteúdo para lotar sua agenda.
-        </p>
+            <section class="step is-active" data-step="1" aria-labelledby="step1-title">
+              <p class="step__eyebrow">Passo 1 de 4 — Nome</p>
+              <h2 class="step__title" id="step1-title">Como você quer ser chamado?</h2>
+              <div class="field">
+                <input class="input" id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Seu nome" required />
+                <p class="error" id="nomeError" aria-live="polite"></p>
+              </div>
+              <div class="actions">
+                <button class="button" type="button" data-next="1">Continuar →</button>
+              </div>
+            </section>
 
-        <p class="subcopy">
-          Aula gratuita para personal trainers que querem um sistema simples de captação.
-        </p>
+            <section class="step" data-step="2" aria-labelledby="step2-title">
+              <p class="step__eyebrow">Passo 2 de 4 — WhatsApp</p>
+              <h2 class="step__title" id="step2-title">Qual o seu WhatsApp?</h2>
+              <p class="step__text">Vou usar pra te enviar o link do grupo e o lembrete da aula.</p>
+              <div class="field">
+                <input class="input" id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999" maxlength="15" required />
+                <p class="error" id="telefoneError" aria-live="polite"></p>
+              </div>
+              <div class="actions">
+                <button class="button" type="button" data-next="2">Continuar →</button>
+              </div>
+            </section>
 
-        <div class="bonus">
-          <span class="bonus__icon" aria-hidden="true">+</span>
-          <span>Bônus exclusivo para quem participar ao vivo.</span>
+            <section class="step" data-step="3" aria-labelledby="step3-title">
+              <p class="step__eyebrow">Passo 3 de 4 — Qualificação</p>
+              <h2 class="step__title" id="step3-title">Quantos alunos fixos você tem hoje?</h2>
+              <div class="options">
+                <label class="option"><input type="radio" name="alunos" value="Ainda não tenho alunos" required /> Ainda não tenho alunos</label>
+                <label class="option"><input type="radio" name="alunos" value="De 1 a 3 alunos" /> De 1 a 3 alunos</label>
+                <label class="option"><input type="radio" name="alunos" value="De 4 a 7 alunos" /> De 4 a 7 alunos</label>
+                <label class="option"><input type="radio" name="alunos" value="8 ou mais alunos" /> 8 ou mais alunos</label>
+                <label class="option"><input type="radio" name="alunos" value="Pretendo começar como personal" /> Pretendo começar como personal</label>
+              </div>
+              <p class="error" id="alunosError" aria-live="polite"></p>
+              <div class="actions">
+                <button class="button" type="button" data-next="3" id="submitLeadButton">Continuar →</button>
+              </div>
+            </section>
+
+            <section class="step" data-step="4" aria-labelledby="step4-title">
+              <div class="success" aria-hidden="true">✓</div>
+              <p class="step__eyebrow">Passo 4 de 4 — Confirmação</p>
+              <h2 class="step__title" id="step4-title">Tudo certo, <span id="confirmName">personal</span>.</h2>
+              <p class="step__text">Sua vaga está garantida pra segunda-feira às 20h.</p>
+              <p class="step__text">Última etapa: entre no grupo do WhatsApp pra receber o link da aula.</p>
+              <div class="actions">
+                <a class="whatsapp-link" id="whatsappButton" href="https://chat.whatsapp.com/JXlIpCdLdNE2Jiv1ktzWku" rel="noopener">Entrar no grupo do WhatsApp →</a>
+              </div>
+              <p class="warning">⚠️ Quem não entrar no grupo não recebe o link.</p>
+            </section>
+          </form>
         </div>
-
-        <div class="price" aria-label="Preço da aula">
-          <span class="price__old">De R$97,00</span>
-          <span class="price__new">Por R$0,00</span>
-        </div>
-
-        <a class="cta" id="ctaButton" href="https://chat.whatsapp.com/JXlIpCdLdNE2Jiv1ktzWku" rel="noopener">
-          Garantir minha vaga agora →
-        </a>
-
-        <p class="notice">Exclusivo para personal trainers e profissionais de educação física.</p>
       </div>
     </section>
   </main>
 
   <script>
-    const ctaButton = document.getElementById("ctaButton");
+    const form = document.getElementById("captureForm");
+    const steps = Array.from(document.querySelectorAll(".step"));
+    const progressBar = document.getElementById("progressBar");
     const whatsappGroupUrl = "https://chat.whatsapp.com/JXlIpCdLdNE2Jiv1ktzWku";
+    const webhookUrl = "https://n8n-n8n.7b7hsj.easypanel.host/webhook/personal-captura";
+    const submitLeadButton = document.getElementById("submitLeadButton");
+    let currentStep = 1;
+    let partialLeadSubmitted = false;
+    let qualifiedLeadSubmitted = false;
 
-    ctaButton.addEventListener("click", function handleCtaClick(event) {
-      event.preventDefault();
+    function showStep(step) {
+      currentStep = step;
+      steps.forEach((item) => item.classList.toggle("is-active", Number(item.dataset.step) === step));
+      progressBar.style.width = `${step * 25}%`;
+
+      const focusTarget = document.querySelector(`[data-step="${step}"] input, [data-step="${step}"] a, [data-step="${step}"] button`);
+      if (focusTarget) {
+        window.setTimeout(() => focusTarget.focus({ preventScroll: true }), 80);
+      }
+    }
+
+    function onlyDigits(value) {
+      return value.replace(/\D/g, "");
+    }
+
+    function maskPhone(value) {
+      const digits = onlyDigits(value).slice(0, 11);
+      if (digits.length <= 2) return digits;
+      if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+      if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+    }
+
+    function setError(id, message) {
+      document.getElementById(id).textContent = message;
+    }
+
+    function validateStep(step) {
+      if (step === 1) {
+        const name = form.nome.value.trim();
+        setError("nomeError", "");
+        if (name.length < 2) {
+          setError("nomeError", "Digite seu nome para continuar.");
+          return false;
+        }
+      }
+
+      if (step === 2) {
+        const phone = onlyDigits(form.telefone.value);
+        setError("telefoneError", "");
+        if (phone.length < 10) {
+          setError("telefoneError", "Digite um WhatsApp válido com DDD.");
+          return false;
+        }
+      }
+
+      if (step === 3) {
+        setError("alunosError", "");
+        if (!form.alunos.value) {
+          setError("alunosError", "Selecione uma opção para continuar.");
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    function leadPayload(status) {
+      const params = new URLSearchParams(new FormData(form));
+      params.set("nome", form.nome.value.trim());
+      params.set("telefone", form.telefone.value.trim());
+      params.set("telefone_limpo", onlyDigits(form.telefone.value));
+      params.set("alunos", form.alunos.value || "vazio");
+      params.set("pergunta", form.alunos.value || "vazio");
+      params.set("status", status);
+      params.set("origem", "personal-webinar-capture");
+      params.set("evento", "Personal 10X - O Fim da Agenda Vazia");
+      params.set("timestamp", new Date().toISOString());
+      return params;
+    }
+
+    function submitToNetlify(params) {
+      return fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+    }
+
+    function submitToWebhook(params) {
+      return fetch(webhookUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+    }
+
+    async function submitLead(status) {
+      if (status === "parcial" && partialLeadSubmitted) return true;
+      if (status === "completo" && qualifiedLeadSubmitted) return true;
+
+      const params = leadPayload(status);
+      if (status === "completo") {
+        submitLeadButton.disabled = true;
+        submitLeadButton.textContent = "Enviando...";
+      }
+
+      try {
+        await Promise.allSettled([
+          submitToNetlify(params),
+          submitToWebhook(params),
+        ]);
+        if (status === "parcial") partialLeadSubmitted = true;
+        if (status === "completo") qualifiedLeadSubmitted = true;
+        return true;
+      } finally {
+        if (status === "completo") {
+          submitLeadButton.disabled = false;
+          submitLeadButton.textContent = "Continuar →";
+        }
+      }
+    }
+
+    document.querySelectorAll("[data-next]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const step = Number(button.dataset.next);
+        if (!validateStep(step)) return;
+
+        if (step === 2) {
+          submitLead("parcial");
+        }
+
+        if (step === 3) {
+          await submitLead("completo");
+          document.getElementById("confirmName").textContent = form.nome.value.trim().split(" ")[0];
+          showStep(4);
+          return;
+        }
+
+        showStep(step + 1);
+      });
+    });
+
+    form.telefone.addEventListener("input", (event) => {
+      event.target.value = maskPhone(event.target.value);
+    });
+
+    document.getElementById("whatsappButton").addEventListener("click", () => {
       window.location.href = whatsappGroupUrl;
     });
   </script>
