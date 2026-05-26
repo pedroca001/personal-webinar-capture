@@ -141,14 +141,9 @@
 
     .copy {
       text-align: center;
-      display: none;
       width: 100%;
       min-width: 0;
       max-width: 100%;
-    }
-
-    .copy.is-visible {
-      display: block;
     }
 
     .brand {
@@ -259,124 +254,94 @@
       line-height: 1.2;
     }
 
-    .form {
+    .countdown-section {
+      padding: 20px 20px 0;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .countdown__block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 56px;
+    }
+
+    .countdown__number {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .countdown__label {
+      color: var(--muted);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .countdown__sep {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--muted);
+      opacity: 0.4;
+      padding-top: 0;
+    }
+
+    .countdown.is-urgent .countdown__number {
+      color: var(--danger);
+    }
+
+    .countdown.is-urgent .countdown__sep {
+      color: var(--danger);
+      opacity: 0.6;
+    }
+
+    .countdown-msg {
+      display: none;
+      text-align: center;
+      color: var(--danger);
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.4;
+      padding: 8px 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .countdown-msg.is-visible {
+      display: block;
+    }
+
+    .card-body {
       padding: 20px;
     }
 
-    .step {
-      display: none;
-      animation: stepIn 240ms ease both;
-    }
-
-    .step.is-active {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .step__eyebrow {
-      margin: 0 0 8px;
-      color: var(--accent);
-      font-size: 0.64rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .step__title {
+    .card-body__title {
       margin: 0;
       color: var(--text);
       font-size: clamp(1.18rem, 4.5vw, 1.44rem);
       font-weight: 900;
       line-height: 1.15;
+      text-align: center;
     }
 
-    .step__text {
+    .card-body__text {
       margin: 8px 0 0;
       color: rgba(255, 255, 255, 0.5);
       font-size: 0.84rem;
       font-weight: 600;
       line-height: 1.5;
-    }
-
-    .field {
-      margin-top: 16px;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 7px;
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .input {
-      width: 100%;
-      height: 52px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.4);
-      color: var(--text);
-      font-size: 0.95rem;
-      font-weight: 700;
-      outline: none;
-      padding: 0 15px;
-      transition: border-color 160ms ease, box-shadow 160ms ease;
-    }
-
-    .input:focus {
-      border-color: rgba(26, 140, 255, 0.6);
-      box-shadow: 0 0 0 3px rgba(26, 140, 255, 0.1);
-    }
-
-    .input::placeholder {
-      color: rgba(255, 255, 255, 0.2);
-    }
-
-    .select-wrapper {
-      position: relative;
-      margin-top: 7px;
-    }
-
-    .select-wrapper::after {
-      content: "▾";
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(255, 255, 255, 0.35);
-      font-size: 0.9rem;
-      pointer-events: none;
-    }
-
-    .select {
-      width: 100%;
-      height: 52px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.4);
-      color: var(--text);
-      font-size: 0.95rem;
-      font-weight: 700;
-      outline: none;
-      padding: 0 38px 0 15px;
-      appearance: none;
-      -webkit-appearance: none;
-      cursor: pointer;
-      transition: border-color 160ms ease, box-shadow 160ms ease;
-    }
-
-    .select:focus {
-      border-color: rgba(26, 140, 255, 0.6);
-      box-shadow: 0 0 0 3px rgba(26, 140, 255, 0.1);
-    }
-
-    .select option {
-      background: #0a0e1a;
-      color: var(--text);
-      padding: 10px;
+      text-align: center;
     }
 
     .scarcity-bar {
@@ -415,7 +380,6 @@
       margin-top: 16px;
     }
 
-    .button,
     .whatsapp-link {
       display: flex;
       width: 100%;
@@ -433,45 +397,16 @@
       text-transform: uppercase;
       letter-spacing: 0.02em;
       transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+      cursor: pointer;
+      border: 0;
     }
 
-    .button:hover,
-    .button:focus-visible,
     .whatsapp-link:hover,
     .whatsapp-link:focus-visible {
       background: var(--cta-hover);
       box-shadow: 0 16px 40px rgba(26, 140, 255, 0.3);
       outline: none;
       transform: translateY(-1px);
-    }
-
-    .button:disabled {
-      cursor: wait;
-      opacity: 0.6;
-      transform: none;
-    }
-
-    .error {
-      min-height: 18px;
-      margin: 6px 0 0;
-      color: var(--danger);
-      font-size: 0.72rem;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .success {
-      display: grid;
-      width: 36px;
-      height: 36px;
-      place-items: center;
-      margin-bottom: 12px;
-      border: 1px solid rgba(26, 140, 255, 0.4);
-      border-radius: 999px;
-      background: rgba(26, 140, 255, 0.1);
-      color: var(--accent);
-      font-size: 1.3rem;
-      font-weight: 900;
     }
 
     .warning {
@@ -483,18 +418,9 @@
       text-align: center;
     }
 
-    .hidden {
-      display: none !important;
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
-    }
-
-    @keyframes stepIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (min-width: 860px) {
@@ -545,30 +471,32 @@
         border-radius: 12px;
       }
 
-      .form {
+      .card-body {
         padding: 14px;
       }
 
-      .step__title {
+      .countdown-section {
+        padding: 14px 14px 0;
+      }
+
+      .countdown__number {
+        font-size: 1.8rem;
+      }
+
+      .countdown__sep {
+        font-size: 1.8rem;
+      }
+
+      .countdown__block {
+        min-width: 46px;
+      }
+
+      .card-body__title {
         font-size: 1.05rem;
       }
 
-      .step__text {
+      .card-body__text {
         font-size: 0.74rem;
-      }
-
-      .field {
-        margin-top: 10px;
-      }
-
-      .input {
-        height: 44px;
-        font-size: 0.88rem;
-      }
-
-      .select {
-        height: 44px;
-        font-size: 0.88rem;
       }
 
       .scarcity-bar {
@@ -584,15 +512,9 @@
         margin-top: 10px;
       }
 
-      .button,
       .whatsapp-link {
         min-height: 44px;
         font-size: 0.74rem;
-      }
-
-      .error {
-        min-height: 14px;
-        margin-top: 4px;
       }
     }
 
@@ -618,6 +540,18 @@
       .headline__main {
         font-size: 2.95rem;
       }
+
+      .countdown__number {
+        font-size: 1.6rem;
+      }
+
+      .countdown__sep {
+        font-size: 1.6rem;
+      }
+
+      .countdown__block {
+        min-width: 40px;
+      }
     }
   </style>
 </head>
@@ -626,13 +560,13 @@
     <header class="topbar" aria-label="Informações da aula ao vivo">
       <div class="topbar__inner">
         <span class="topbar__dot" aria-hidden="true"></span>
-        <span>Segunda-feira · 20h · Ao vivo no Meet</span>
+        <span id="topbarText">Segunda-feira · 20h · Ao vivo</span>
       </div>
     </header>
 
     <section class="hero" aria-labelledby="main-title">
       <div class="shell">
-        <div class="copy is-visible">
+        <div class="copy">
           <div class="brand" aria-label="Sistema Personal Magnético">
             <span>Sistema Personal Magnético</span>
           </div>
@@ -642,84 +576,64 @@
             <span class="headline__main">Agenda <span>Vazia</span></span>
           </h1>
 
-          <p class="mini-copy" style="display:none;"></p>
+          <p class="mini-copy">Aula gratuita ao vivo para personal trainers que querem lotar a agenda com um sistema simples de captação.</p>
         </div>
 
         <div class="capture-card">
           <div class="event-strip" aria-label="Data e horario da aula">
             <span class="event-strip__label">Aula gratuita <span class="event-strip__live"><span class="event-strip__rec" aria-hidden="true"></span>ao vivo</span></span>
-            <strong class="event-strip__time">Próxima segunda-feira, 20h</strong>
+            <strong class="event-strip__time" id="eventDate">Próxima segunda-feira, 20h</strong>
           </div>
 
-          <form class="form" name="personal-captura" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="captureForm">
-            <input type="hidden" name="form-name" value="personal-captura" />
-            <p class="hidden">
-              <label>Não preencha este campo: <input name="bot-field" /></label>
-            </p>
+          <div class="countdown-section">
+            <div class="countdown" id="countdown">
+              <div class="countdown__block">
+                <span class="countdown__number" id="cdDays">0</span>
+                <span class="countdown__label">Dias</span>
+              </div>
+              <span class="countdown__sep">:</span>
+              <div class="countdown__block">
+                <span class="countdown__number" id="cdHours">0</span>
+                <span class="countdown__label">Horas</span>
+              </div>
+              <span class="countdown__sep">:</span>
+              <div class="countdown__block">
+                <span class="countdown__number" id="cdMinutes">0</span>
+                <span class="countdown__label">Min</span>
+              </div>
+              <span class="countdown__sep">:</span>
+              <div class="countdown__block">
+                <span class="countdown__number" id="cdSeconds">0</span>
+                <span class="countdown__label">Seg</span>
+              </div>
+            </div>
+            <p class="countdown-msg" id="countdownMsg">A aula começa em minutos — garanta sua vaga agora</p>
+          </div>
 
-            <section class="step is-active" data-step="1" aria-labelledby="step1-title">
-              <p class="step__eyebrow">Leva menos de 20 segundos</p>
-              <h2 class="step__title" id="step1-title">Preencha para liberar o grupo e acessar a aula.</h2>
-              <p class="step__text">O link da aula é enviado apenas pelo grupo do WhatsApp.</p>
-              <div class="field">
-                <label for="nome">Nome</label>
-                <input class="input" id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Seu nome" required />
-                <p class="error" id="nomeError" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <label for="telefone">WhatsApp</label>
-                <input class="input" id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999" maxlength="15" required />
-                <p class="error" id="telefoneError" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <label for="alunos">Quantos alunos você atende hoje?</label>
-                <div class="select-wrapper">
-                  <select class="select" id="alunos" name="alunos" required>
-                    <option value="" disabled selected>Selecione</option>
-                    <option value="Ainda não tenho alunos">Ainda não tenho alunos</option>
-                    <option value="De 1 a 3 alunos">De 1 a 3 alunos</option>
-                    <option value="De 4 a 7 alunos">De 4 a 7 alunos</option>
-                    <option value="8 ou mais alunos">8 ou mais alunos</option>
-                    <option value="Pretendo começar como personal">Pretendo começar como personal</option>
-                  </select>
-                </div>
-                <p class="error" id="alunosError" aria-live="polite"></p>
-              </div>
-              <div class="scarcity-bar">
-                <span class="scarcity-bar__dot" aria-hidden="true"></span>
-                <span class="scarcity-bar__text"><strong>Vagas limitadas.</strong> O grupo fecha quando atingir o limite.</span>
-              </div>
-              <div class="actions">
-                <button class="button" type="submit" id="submitButton">Liberar grupo</button>
-              </div>
-            </section>
+          <div class="card-body">
+            <h2 class="card-body__title">Entre no grupo e receba o link da aula ao vivo.</h2>
+            <p class="card-body__text">O link da aula é enviado apenas pelo grupo do WhatsApp.</p>
 
-            <section class="step" data-step="2" aria-labelledby="step2-title">
-              <div class="success" aria-hidden="true">OK</div>
-              <p class="step__eyebrow">Grupo liberado</p>
-              <h2 class="step__title" id="step2-title">Tudo certo, <span id="confirmName">personal</span>.</h2>
-              <p class="step__text">Sua vaga está garantida para a próxima segunda-feira, às 20h.</p>
-              <p class="step__text">Entre no grupo do WhatsApp agora para receber o link da aula.</p>
-              <div class="actions">
-                <a class="whatsapp-link" id="whatsappButton" href="https://chat.whatsapp.com/LYYkFi9ca5M1xrqTsuhzpe" rel="noopener">Entrar no grupo do WhatsApp</a>
-              </div>
-              <p class="warning">Quem não entrar no grupo não recebe o link.</p>
-            </section>
-          </form>
+            <div class="scarcity-bar">
+              <span class="scarcity-bar__dot" aria-hidden="true"></span>
+              <span class="scarcity-bar__text"><strong>Vagas limitadas.</strong> O grupo fecha quando atingir o limite.</span>
+            </div>
+
+            <div class="actions">
+              <a class="whatsapp-link" id="ctaButton" href="https://chat.whatsapp.com/LYYkFi9ca5M1xrqTsuhzpe" rel="noopener">Quero minha vaga na aula gratuita →</a>
+            </div>
+
+            <p class="warning">Quem não entrar no grupo não recebe o link.</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <script>
-    const form = document.getElementById("captureForm");
-    const steps = Array.from(document.querySelectorAll(".step"));
-    const submitButton = document.getElementById("submitButton");
     const whatsappGroupUrl = "https://chat.whatsapp.com/LYYkFi9ca5M1xrqTsuhzpe";
     const webhookUrl = "https://n8n-n8n.7b7hsj.easypanel.host/webhook/personal-captura";
-    let currentStep = 1;
-    let leadSent = false;
-    let submittingLead = false;
+    let leadFired = false;
 
     const landingTimestamp = Date.now();
     const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"];
@@ -752,179 +666,120 @@
       if (fbpMatch) utmData.fbp = fbpMatch[1];
     } catch (e) {}
 
-    const copyBlock = document.querySelector(".copy");
+    // --- Countdown & dynamic date ---
 
-    function showStep(step) {
-      currentStep = step;
-      steps.forEach((item) => item.classList.toggle("is-active", Number(item.dataset.step) === step));
-      copyBlock.classList.toggle("is-visible", step === 1 || step === 2);
+    const MESES_PT = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
 
-      const focusTarget = document.querySelector(`[data-step="${step}"] input, [data-step="${step}"] a, [data-step="${step}"] button`);
-      if (focusTarget) {
-        window.setTimeout(() => focusTarget.focus({ preventScroll: true }), 80);
+    function getNextMondayBRT() {
+      const now = new Date();
+      const brt = new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+      const brtOffset = brt.getTime() - now.getTime();
+
+      const target = new Date(brt);
+      target.setHours(20, 0, 0, 0);
+
+      const day = brt.getDay();
+      if (day === 1 && brt < target) {
+        // today is Monday before 20h
+      } else {
+        const daysUntilMonday = (8 - day) % 7 || 7;
+        target.setDate(target.getDate() + daysUntilMonday);
+      }
+
+      const targetUTC = new Date(target.getTime() - brtOffset);
+      return { targetUTC, targetBRT: target, isToday: day === 1 && brt < new Date(brt).setHours(20,0,0,0) };
+    }
+
+    function updateEventDate() {
+      const { targetBRT } = getNextMondayBRT();
+      const el = document.getElementById("eventDate");
+
+      const now = new Date();
+      const brt = new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+      const day = brt.getDay();
+      const before20 = brt.getHours() < 20;
+
+      if (day === 1 && before20) {
+        el.textContent = "Hoje às 20h — sua vaga ainda está disponível";
+      } else {
+        el.textContent = "Segunda-feira, " + targetBRT.getDate() + " de " + MESES_PT[targetBRT.getMonth()] + ", às 20h";
       }
     }
 
-    async function sha256(str) {
-      const data = new TextEncoder().encode(str.trim().toLowerCase());
-      const buf = await crypto.subtle.digest("SHA-256", data);
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    function updateCountdown() {
+      const { targetUTC } = getNextMondayBRT();
+      const now = new Date();
+      let diff = targetUTC.getTime() - now.getTime();
+      if (diff < 0) diff = 0;
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      const cdEl = document.getElementById("countdown");
+      const msgEl = document.getElementById("countdownMsg");
+
+      if (totalSeconds <= 3600) {
+        cdEl.style.display = "none";
+        msgEl.classList.add("is-visible");
+      } else {
+        cdEl.style.display = "flex";
+        msgEl.classList.remove("is-visible");
+
+        document.getElementById("cdDays").textContent = String(days).padStart(2, "0");
+        document.getElementById("cdHours").textContent = String(hours).padStart(2, "0");
+        document.getElementById("cdMinutes").textContent = String(minutes).padStart(2, "0");
+        document.getElementById("cdSeconds").textContent = String(seconds).padStart(2, "0");
+
+        cdEl.classList.toggle("is-urgent", totalSeconds <= 86400);
+      }
     }
 
-    function onlyDigits(value) {
-      return value.replace(/\D/g, "");
-    }
+    updateEventDate();
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-    function maskPhone(value) {
-      const digits = onlyDigits(value).slice(0, 11);
-      if (digits.length <= 2) return digits;
-      if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-      if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
-      return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-    }
+    // --- Lead on click ---
 
-    function setError(id, message) {
-      document.getElementById(id).textContent = message;
-    }
+    function fireLeadEvent() {
+      if (leadFired) return;
+      leadFired = true;
 
-    function validateForm() {
-      let isValid = true;
-      const name = form.nome.value.trim();
-      const phone = onlyDigits(form.telefone.value);
-      const qualification = form.alunos.value;
+      const eventId = crypto.randomUUID();
 
-      setError("nomeError", "");
-      setError("telefoneError", "");
-      setError("alunosError", "");
-
-      if (name.length < 2) {
-        setError("nomeError", "Digite seu nome para liberar o grupo.");
-        isValid = false;
+      if (typeof fbq === "function") {
+        fbq("track", "Lead", {}, { eventID: eventId });
       }
 
-      if (phone.length < 10) {
-        setError("telefoneError", "Digite um WhatsApp válido com DDD.");
-        isValid = false;
-      }
-
-      if (!qualification) {
-        setError("alunosError", "Selecione sua quantidade atual de alunos.");
-        isValid = false;
-      }
-
-      return isValid;
-    }
-
-    function leadPayload(status, forceEmptyQualification = false) {
-      const params = new URLSearchParams(new FormData(form));
-      const qualification = forceEmptyQualification ? "" : form.alunos.value;
-      params.set("nome", form.nome.value.trim());
-      params.set("telefone", form.telefone.value.trim());
-      params.set("telefone_limpo", onlyDigits(form.telefone.value));
-      params.set("alunos", qualification || "vazio");
-      params.set("pergunta", qualification || "vazio");
-      params.set("status", status);
+      const params = new URLSearchParams();
+      params.set("status", "completo");
       params.set("origem", "personal-webinar-capture");
       params.set("evento", "SPM - O Fim da Agenda Vazia");
       params.set("timestamp", new Date().toISOString());
+      params.set("event_id", eventId);
       params.set("event_source_url", window.location.href.split("?")[0]);
+      params.set("modo", "grupo-aberto");
       Object.entries(utmData).forEach(([key, val]) => params.set(key, val));
-      return params;
-    }
-
-    function submitToNetlify(params) {
-      return fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString(),
-      });
-    }
-
-    function submitToWebhook(params) {
-      return fetch(webhookUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString(),
-      });
-    }
-
-    async function submitLead(status, eventId) {
-      if (leadSent || submittingLead) return true;
-      submittingLead = true;
-
-      const params = leadPayload(status);
-      if (eventId) params.set("event_id", eventId);
-      const phoneDigits = onlyDigits(form.telefone.value);
-      if (phoneDigits) params.set("ph_hash", await sha256("55" + phoneDigits));
-      const firstName = form.nome.value.trim().split(" ")[0];
-      if (firstName) params.set("fn_hash", await sha256(firstName));
-
-      try {
-        await Promise.allSettled([
-          submitToNetlify(params),
-          submitToWebhook(params),
-        ]);
-        leadSent = true;
-        return true;
-      } finally {
-        submittingLead = false;
-      }
-    }
-
-    function hasMinimumPartialLead() {
-      return form.nome.value.trim().length >= 2 && onlyDigits(form.telefone.value).length >= 10;
-    }
-
-    function submitAbandonLead() {
-      if (leadSent || !hasMinimumPartialLead()) return;
-      const params = leadPayload("abandono", true);
-      leadSent = true;
 
       if (navigator.sendBeacon) {
         navigator.sendBeacon(webhookUrl, params);
-        navigator.sendBeacon("/", params);
-        return;
+      } else {
+        fetch(webhookUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: params.toString(),
+        });
       }
-
-      submitToWebhook(params);
-      submitToNetlify(params);
     }
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (!validateForm()) return;
-
-      submitButton.disabled = true;
-      submitButton.textContent = "Liberando...";
-      const eventId = crypto.randomUUID();
-      await submitLead("completo", eventId);
-      if (typeof fbq === 'function') fbq('track', 'Lead', {}, {eventID: eventId});
-      document.getElementById("confirmName").textContent = form.nome.value.trim().split(" ")[0];
-      showStep(2);
+    document.getElementById("ctaButton").addEventListener("click", (e) => {
+      e.preventDefault();
+      fireLeadEvent();
+      setTimeout(() => { window.location.href = whatsappGroupUrl; }, 300);
     });
-
-    form.telefone.addEventListener("input", (event) => {
-      event.target.value = maskPhone(event.target.value);
-    });
-
-    document.getElementById("whatsappButton").addEventListener("click", () => {
-      window.location.href = whatsappGroupUrl;
-    });
-
-    window.addEventListener("beforeunload", () => {
-      submitAbandonLead();
-    });
-
-    if (history.pushState) {
-      history.replaceState({ page: "capture" }, "", window.location.href);
-      history.pushState({ page: "capture-guard" }, "", window.location.href);
-
-      window.addEventListener("popstate", () => {
-        submitAbandonLead();
-        window.location.href = "/back/";
-      });
-    }
   </script>
 </body>
 </html>
