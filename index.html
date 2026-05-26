@@ -688,6 +688,7 @@
     let currentStep = 1;
     let leadSent = false;
 
+    const landingTimestamp = Date.now();
     const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"];
     const urlParams = new URLSearchParams(window.location.search);
     const utmData = {};
@@ -695,6 +696,18 @@
       const val = urlParams.get(key);
       if (val) utmData[key] = val;
     });
+    if (utmData.fbclid) {
+      utmData.fbc = "fb.1." + landingTimestamp + "." + utmData.fbclid;
+      try {
+        document.cookie = "_fbc=" + utmData.fbc + ";max-age=7776000;path=/;SameSite=Lax";
+      } catch (e) {}
+    } else {
+      try {
+        const fbcMatch = document.cookie.match(/(?:^|;\s*)_fbc=(fb\.\d+\.\d+\..+?)(?:;|$)/);
+        if (fbcMatch) utmData.fbc = fbcMatch[1];
+      } catch (e) {}
+    }
+    utmData.landing_timestamp = String(landingTimestamp);
     utmData.utm_referrer = document.referrer || "";
     utmData.referrer = document.referrer || "";
     try {
