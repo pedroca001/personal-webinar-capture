@@ -730,6 +730,12 @@
       }
     }
 
+    async function sha256(str) {
+      const data = new TextEncoder().encode(str.trim().toLowerCase());
+      const buf = await crypto.subtle.digest("SHA-256", data);
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
     function onlyDigits(value) {
       return value.replace(/\D/g, "");
     }
@@ -815,6 +821,10 @@
 
       const params = leadPayload(status);
       if (eventId) params.set("event_id", eventId);
+      const phoneDigits = onlyDigits(form.telefone.value);
+      if (phoneDigits) params.set("ph_hash", await sha256("55" + phoneDigits));
+      const firstName = form.nome.value.trim().split(" ")[0];
+      if (firstName) params.set("fn_hash", await sha256(firstName));
       submitLeadButton.disabled = true;
       submitLeadButton.textContent = "Enviando...";
 
