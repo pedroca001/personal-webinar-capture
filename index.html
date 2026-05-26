@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Personal 10X - O Fim da Agenda Vazia. Aula gratuita para personal trainers que querem lotar a agenda com um sistema simples de captação." />
   <title>Personal 10X - O Fim da Agenda Vazia</title>
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1348830410541119');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1348830410541119&ev=PageView&noscript=1"
+  /></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -673,6 +688,20 @@
     let currentStep = 1;
     let leadSent = false;
 
+    const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"];
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmData = {};
+    utmKeys.forEach((key) => {
+      const val = urlParams.get(key);
+      if (val) utmData[key] = val;
+    });
+    utmData.utm_referrer = document.referrer || "";
+    utmData.referrer = document.referrer || "";
+    try {
+      const ga = document.cookie.match(/_ga=GA\d+\.\d+\.(.+?)(?:;|$)/);
+      if (ga) utmData.gclientid = ga[1];
+    } catch (e) {}
+
     function showStep(step) {
       currentStep = step;
       steps.forEach((item) => item.classList.toggle("is-active", Number(item.dataset.step) === step));
@@ -742,6 +771,7 @@
       params.set("origem", "personal-webinar-capture");
       params.set("evento", "Personal 10X - O Fim da Agenda Vazia");
       params.set("timestamp", new Date().toISOString());
+      Object.entries(utmData).forEach(([key, val]) => params.set(key, val));
       return params;
     }
 
@@ -808,6 +838,7 @@
 
         if (step === 3) {
           await submitLead("completo");
+          if (typeof fbq === 'function') fbq('track', 'Lead');
           document.getElementById("confirmName").textContent = form.nome.value.trim().split(" ")[0];
           showStep(4);
           return;
