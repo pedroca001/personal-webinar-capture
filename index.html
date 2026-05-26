@@ -154,28 +154,13 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
       margin-bottom: 14px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.68);
       font-size: 0.62rem;
       font-weight: 800;
       letter-spacing: 0.18em;
       line-height: 1;
       text-transform: uppercase;
-    }
-
-    .brand__mark {
-      display: grid;
-      width: 30px;
-      height: 30px;
-      place-items: center;
-      border: 1px solid rgba(26, 140, 255, 0.35);
-      border-radius: 8px;
-      background: rgba(26, 140, 255, 0.08);
-      color: var(--accent);
-      font-size: 0.62rem;
-      font-weight: 900;
-      letter-spacing: 0;
     }
 
     .headline {
@@ -249,6 +234,22 @@
       letter-spacing: 0.16em;
       line-height: 1.2;
       text-transform: uppercase;
+    }
+
+    .event-strip__live {
+      color: var(--danger);
+    }
+
+    .event-strip__rec {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 3px;
+      border-radius: 999px;
+      background: var(--danger);
+      box-shadow: 0 0 6px rgba(255, 107, 107, 0.7);
+      vertical-align: middle;
+      animation: pulse 1.8s ease-in-out infinite;
     }
 
     .event-strip__time {
@@ -633,7 +634,6 @@
       <div class="shell">
         <div class="copy is-visible">
           <div class="brand" aria-label="Sistema Personal Magnético">
-            <span class="brand__mark">SPM</span>
             <span>Sistema Personal Magnético</span>
           </div>
 
@@ -647,7 +647,7 @@
 
         <div class="capture-card">
           <div class="event-strip" aria-label="Data e horario da aula">
-            <span class="event-strip__label">Aula gratuita ao vivo</span>
+            <span class="event-strip__label">Aula gratuita <span class="event-strip__live"><span class="event-strip__rec" aria-hidden="true"></span>ao vivo</span></span>
             <strong class="event-strip__time">Próxima segunda-feira, 20h</strong>
           </div>
 
@@ -660,7 +660,7 @@
             <section class="step is-active" data-step="1" aria-labelledby="step1-title">
               <p class="step__eyebrow">Leva menos de 20 segundos</p>
               <h2 class="step__title" id="step1-title">Preencha para liberar o grupo e acessar a aula.</h2>
-              <p class="step__text">A gente pede essas informações para manter o grupo com personais no momento certo e enviar o link da aula.</p>
+              <p class="step__text">O link da aula é enviado apenas pelo grupo do WhatsApp.</p>
               <div class="field">
                 <label for="nome">Nome</label>
                 <input class="input" id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Seu nome" required />
