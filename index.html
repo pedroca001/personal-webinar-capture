@@ -558,7 +558,7 @@
 
     <section class="hero" aria-labelledby="main-title">
       <div class="shell">
-        <div class="copy">
+        <div class="copy is-visible">
           <div class="brand" aria-label="Sistema Personal Magnético">
             <span class="brand__mark">SPM</span>
             <span>Sistema Personal Magnético</span>
@@ -687,7 +687,7 @@
       currentStep = step;
       steps.forEach((item) => item.classList.toggle("is-active", Number(item.dataset.step) === step));
       progressBar.style.width = `${step * 25}%`;
-      copyBlock.classList.toggle("is-visible", step === 4);
+      copyBlock.classList.toggle("is-visible", step === 1 || step === 4);
 
       const focusTarget = document.querySelector(`[data-step="${step}"] input, [data-step="${step}"] a, [data-step="${step}"] button`);
       if (focusTarget) {
