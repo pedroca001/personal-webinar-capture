@@ -701,6 +701,10 @@
       const ga = document.cookie.match(/_ga=GA\d+\.\d+\.(.+?)(?:;|$)/);
       if (ga) utmData.gclientid = ga[1];
     } catch (e) {}
+    try {
+      const fbpMatch = document.cookie.match(/(?:^|;\s*)_fbp=(fb\.\d+\.\d+\.\d+)/);
+      if (fbpMatch) utmData.fbp = fbpMatch[1];
+    } catch (e) {}
 
     function showStep(step) {
       currentStep = step;
@@ -771,6 +775,7 @@
       params.set("origem", "personal-webinar-capture");
       params.set("evento", "Personal 10X - O Fim da Agenda Vazia");
       params.set("timestamp", new Date().toISOString());
+      params.set("event_source_url", window.location.href.split("?")[0]);
       Object.entries(utmData).forEach(([key, val]) => params.set(key, val));
       return params;
     }
@@ -792,10 +797,11 @@
       });
     }
 
-    async function submitLead(status) {
+    async function submitLead(status, eventId) {
       if (leadSent) return true;
 
       const params = leadPayload(status);
+      if (eventId) params.set("event_id", eventId);
       submitLeadButton.disabled = true;
       submitLeadButton.textContent = "Enviando...";
 
@@ -837,8 +843,9 @@
         if (!validateStep(step)) return;
 
         if (step === 3) {
-          await submitLead("completo");
-          if (typeof fbq === 'function') fbq('track', 'Lead');
+          const eventId = crypto.randomUUID();
+          await submitLead("completo", eventId);
+          if (typeof fbq === 'function') fbq('track', 'Lead', {}, {eventID: eventId});
           document.getElementById("confirmName").textContent = form.nome.value.trim().split(" ")[0];
           showStep(4);
           return;
