@@ -192,12 +192,7 @@
     }
 
     .mini-copy {
-      max-width: 340px;
-      margin: 14px auto 0;
-      color: rgba(255, 255, 255, 0.45);
-      font-size: 0.82rem;
-      font-weight: 600;
-      line-height: 1.5;
+      display: none;
     }
 
     .capture-card {
@@ -255,25 +250,29 @@
     }
 
     .countdown-section {
-      padding: 20px 20px 0;
+      padding: 20px 20px 16px;
     }
 
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .countdown__block {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 56px;
+      width: 60px;
+      padding: 10px 0 8px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .countdown__number {
       font-family: "Bebas Neue", Impact, sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.6rem;
       font-weight: 400;
       line-height: 1;
       color: var(--text);
@@ -282,29 +281,28 @@
 
     .countdown__label {
       color: var(--muted);
-      font-size: 0.58rem;
+      font-size: 0.5rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
     .countdown__sep {
-      font-family: "Bebas Neue", Impact, sans-serif;
-      font-size: 2.2rem;
+      font-size: 1.4rem;
       line-height: 1;
-      color: var(--muted);
-      opacity: 0.4;
-      padding-top: 0;
+      color: rgba(255, 255, 255, 0.15);
+      align-self: center;
+      padding-bottom: 14px;
+    }
+
+    .countdown.is-urgent .countdown__block {
+      border-color: rgba(255, 107, 107, 0.25);
+      background: rgba(255, 107, 107, 0.06);
     }
 
     .countdown.is-urgent .countdown__number {
       color: var(--danger);
-    }
-
-    .countdown.is-urgent .countdown__sep {
-      color: var(--danger);
-      opacity: 0.6;
     }
 
     .countdown-msg {
@@ -323,41 +321,22 @@
     }
 
     .card-body {
-      padding: 20px;
-    }
-
-    .card-body__title {
-      margin: 0;
-      color: var(--text);
-      font-size: clamp(1.18rem, 4.5vw, 1.44rem);
-      font-weight: 900;
-      line-height: 1.15;
-      text-align: center;
-    }
-
-    .card-body__text {
-      margin: 8px 0 0;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.84rem;
-      font-weight: 600;
-      line-height: 1.5;
-      text-align: center;
+      padding: 4px 20px 20px;
     }
 
     .scarcity-bar {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      margin-top: 14px;
-      padding: 10px 14px;
-      border: 1px solid rgba(255, 107, 107, 0.2);
-      border-radius: 10px;
+      padding: 8px 14px;
+      border-radius: 8px;
       background: rgba(255, 107, 107, 0.06);
     }
 
     .scarcity-bar__dot {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       flex: 0 0 auto;
       border-radius: 999px;
       background: var(--danger);
@@ -365,8 +344,8 @@
     }
 
     .scarcity-bar__text {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.68rem;
       font-weight: 700;
       line-height: 1.3;
     }
@@ -375,27 +354,44 @@
       color: var(--danger);
     }
 
-    .actions {
-      display: flex;
-      margin-top: 16px;
+    .cta-hint {
+      margin: 16px 0 6px;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-hint__arrow {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.8rem;
+      line-height: 1;
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
     }
 
     .whatsapp-link {
       display: flex;
       width: 100%;
-      min-height: 50px;
+      min-height: 54px;
       align-items: center;
       justify-content: center;
-      border-radius: 10px;
+      border-radius: 12px;
       background: var(--cta);
-      box-shadow: 0 12px 32px rgba(26, 140, 255, 0.2);
+      box-shadow: 0 12px 32px rgba(26, 140, 255, 0.25);
       color: #ffffff;
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       font-weight: 900;
       line-height: 1.2;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
       transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
       cursor: pointer;
       border: 0;
@@ -404,18 +400,9 @@
     .whatsapp-link:hover,
     .whatsapp-link:focus-visible {
       background: var(--cta-hover);
-      box-shadow: 0 16px 40px rgba(26, 140, 255, 0.3);
+      box-shadow: 0 16px 40px rgba(26, 140, 255, 0.35);
       outline: none;
       transform: translateY(-1px);
-    }
-
-    .warning {
-      margin: 14px 0 0;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 0.74rem;
-      font-weight: 700;
-      line-height: 1.35;
-      text-align: center;
     }
 
     @keyframes fadeIn {
@@ -472,49 +459,25 @@
       }
 
       .card-body {
-        padding: 14px;
+        padding: 4px 14px 14px;
       }
 
       .countdown-section {
-        padding: 14px 14px 0;
+        padding: 14px 14px 12px;
       }
 
       .countdown__number {
-        font-size: 1.8rem;
-      }
-
-      .countdown__sep {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
       .countdown__block {
-        min-width: 46px;
-      }
-
-      .card-body__title {
-        font-size: 1.05rem;
-      }
-
-      .card-body__text {
-        font-size: 0.74rem;
-      }
-
-      .scarcity-bar {
-        margin-top: 10px;
-        padding: 8px 11px;
-      }
-
-      .scarcity-bar__text {
-        font-size: 0.68rem;
-      }
-
-      .actions {
-        margin-top: 10px;
+        width: 50px;
+        padding: 8px 0 6px;
       }
 
       .whatsapp-link {
-        min-height: 44px;
-        font-size: 0.74rem;
+        min-height: 48px;
+        font-size: 0.78rem;
       }
     }
 
@@ -542,15 +505,12 @@
       }
 
       .countdown__number {
-        font-size: 1.6rem;
-      }
-
-      .countdown__sep {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
 
       .countdown__block {
-        min-width: 40px;
+        width: 46px;
+        padding: 7px 0 5px;
       }
     }
   </style>
@@ -611,19 +571,13 @@
           </div>
 
           <div class="card-body">
-            <h2 class="card-body__title">Entre no grupo e receba o link da aula ao vivo.</h2>
-            <p class="card-body__text">O link da aula é enviado apenas pelo grupo do WhatsApp.</p>
-
             <div class="scarcity-bar">
               <span class="scarcity-bar__dot" aria-hidden="true"></span>
               <span class="scarcity-bar__text"><strong>Vagas limitadas.</strong> O grupo fecha quando atingir o limite.</span>
             </div>
 
-            <div class="actions">
-              <a class="whatsapp-link" id="ctaButton" href="https://chat.whatsapp.com/LYYkFi9ca5M1xrqTsuhzpe" rel="noopener">Quero minha vaga na aula gratuita →</a>
-            </div>
-
-            <p class="warning">Quem não entrar no grupo não recebe o link.</p>
+            <p class="cta-hint">Clique para entrar no grupo<span class="cta-hint__arrow" aria-hidden="true">&#8595;</span></p>
+            <a class="whatsapp-link" id="ctaButton" href="https://chat.whatsapp.com/LYYkFi9ca5M1xrqTsuhzpe" rel="noopener">Garantir minha vaga</a>
           </div>
         </div>
       </div>
