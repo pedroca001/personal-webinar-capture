@@ -146,18 +146,6 @@
       max-width: 100%;
     }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      margin-bottom: 14px;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
     .headline {
       margin: 0;
       font-family: "Bebas Neue", Impact, sans-serif;
@@ -191,8 +179,13 @@
       color: var(--accent);
     }
 
-    .mini-copy {
-      display: none;
+    .sub-headline {
+      max-width: 340px;
+      margin: 14px auto 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.55;
     }
 
     .capture-card {
@@ -441,10 +434,6 @@
         gap: 16px;
       }
 
-      .brand {
-        margin-bottom: 8px;
-      }
-
       .headline__main {
         font-size: clamp(3rem, 12vw, 4rem);
       }
@@ -527,16 +516,12 @@
     <section class="hero" aria-labelledby="main-title">
       <div class="shell">
         <div class="copy">
-          <div class="brand" aria-label="Sistema Personal Magnético">
-            <span>Sistema Personal Magnético</span>
-          </div>
-
           <h1 id="main-title" class="headline">
             <span class="headline__top">O <span class="headline__accent">Fim</span> da</span>
             <span class="headline__main">Agenda <span>Vazia</span></span>
           </h1>
 
-          <p class="mini-copy">Aula gratuita ao vivo para personal trainers que querem lotar a agenda com um sistema simples de captação.</p>
+          <p class="sub-headline">Descubra o método de 3 passos que personais comuns estão usando para faturar R$5.000 a R$10.000/mês — sem precisar de seguidores, sem postar todo dia e sem depender de academia.</p>
         </div>
 
         <div class="capture-card">
@@ -577,7 +562,7 @@
             </div>
 
             <p class="cta-hint">Clique para entrar no grupo<span class="cta-hint__arrow" aria-hidden="true">&#8595;</span></p>
-            <a class="whatsapp-link" id="ctaButton" href="https://chat.whatsapp.com/LYYkFi9ca5M1xrqTsuhzpe" rel="noopener">Garantir minha vaga</a>
+            <a class="whatsapp-link" id="ctaButton" href="https://chat.whatsapp.com/LYYkFi9ca5M1xrqTsuhzpe" rel="noopener">Garantir minha vaga gratuita</a>
           </div>
         </div>
       </div>
