@@ -131,6 +131,11 @@
 
     .copy {
       text-align: center;
+      display: none;
+    }
+
+    .copy.is-visible {
+      display: block;
     }
 
     .brand {
@@ -170,12 +175,16 @@
 
     .headline__top {
       display: block;
-      margin-bottom: 4px;
-      color: var(--muted);
-      font-family: "Inter", Arial, sans-serif;
-      font-size: clamp(0.72rem, 2.8vw, 0.88rem);
-      font-weight: 800;
-      letter-spacing: 0.28em;
+      margin-bottom: 6px;
+      color: var(--text);
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: clamp(1.8rem, 7vw, 2.6rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+
+    .headline__accent {
+      color: var(--accent);
     }
 
     .headline__main {
@@ -526,16 +535,6 @@
       }
     }
 
-    @media (max-height: 620px) {
-      .copy {
-        display: none;
-      }
-
-      .shell {
-        gap: 0;
-      }
-    }
-
     @media (max-width: 390px) {
       .hero {
         padding-right: 14px;
@@ -566,7 +565,7 @@
           </div>
 
           <h1 id="main-title" class="headline">
-            <span class="headline__top">O fim da</span>
+            <span class="headline__top">O <span class="headline__accent">Fim</span> da</span>
             <span class="headline__main">Agenda <span>Vazia</span></span>
           </h1>
 
@@ -682,10 +681,13 @@
       if (fbpMatch) utmData.fbp = fbpMatch[1];
     } catch (e) {}
 
+    const copyBlock = document.querySelector(".copy");
+
     function showStep(step) {
       currentStep = step;
       steps.forEach((item) => item.classList.toggle("is-active", Number(item.dataset.step) === step));
       progressBar.style.width = `${step * 25}%`;
+      copyBlock.classList.toggle("is-visible", step === 4);
 
       const focusTarget = document.querySelector(`[data-step="${step}"] input, [data-step="${step}"] a, [data-step="${step}"] button`);
       if (focusTarget) {
