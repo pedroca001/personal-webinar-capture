@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cada vez mais personal trainers estão lotando a agenda sem depender da indicação boca a boca. Entenda o passo a passo que tem mudado a rotina de quem vive da profissão." />
+  <meta name="robots" content="index, follow" />
+  <title>Como personal trainers estão lotando a agenda sem depender de indicação — Portal Treino & Carreira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --paper: #ffffff;
+      --ink: #1a1a1a;
+      --soft: #4a4a4a;
+      --muted: #6f6f6f;
+      --line: #e6e6e6;
+      --brand: #1357c9;
+      --brand-dark: #0e3f93;
+      --tag: #c0392b;
+      --wash: #f6f7f9;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--wash);
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* ---------- Topo / masthead ---------- */
+    .masthead {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .masthead__bar {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .brand__mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .brand__name span { color: var(--brand); }
+    .nav {
+      display: flex;
+      gap: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .nav a { color: var(--soft); }
+    .nav a:hover { color: var(--brand); text-decoration: none; }
+
+    .subbar {
+      background: var(--ink);
+      color: #d9d9d9;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+    .subbar__inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 7px 22px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ---------- Container do artigo ---------- */
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+    .article {
+      background: var(--paper);
+      margin: 26px auto 40px;
+      padding: 38px 46px 46px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .crumb {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .crumb .cat { color: var(--tag); }
+
+    h1.headline {
+      font-family: "Lora", Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(1.85rem, 5vw, 2.55rem);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin: 0 0 14px;
+      color: var(--ink);
+    }
+    .standfirst {
+      font-family: "Lora", Georgia, serif;
+      font-size: clamp(1.05rem, 2.6vw, 1.22rem);
+      line-height: 1.55;
+      color: var(--soft);
+      margin: 0 0 22px;
+    }
+
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 26px;
+    }
+    .byline__avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex: 0 0 auto;
+    }
+    .byline__meta { font-size: 0.82rem; line-height: 1.45; }
+    .byline__meta strong { color: var(--ink); }
+    .byline__meta span { color: var(--muted); }
+
+    figure { margin: 0 0 26px; }
+    figure img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 4px;
+      background: #eef1f6;
+    }
+    figure.inline { margin: 30px 0; }
+    figcaption {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    .body p {
+      font-family: "Lora", Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.72;
+      color: var(--ink);
+      margin: 0 0 20px;
+    }
+    .body p.lead::first-letter {
+      font-size: 3.1rem;
+      font-weight: 700;
+      float: left;
+      line-height: 0.82;
+      padding: 4px 10px 0 0;
+      color: var(--brand);
+      font-family: "Lora", Georgia, serif;
+    }
+
+    .body h2 {
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin: 36px 0 14px;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .body h3 {
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin: 26px 0 8px;
+      color: var(--brand-dark);
+    }
+
+    .pull {
+      border-left: 4px solid var(--brand);
+      background: var(--wash);
+      padding: 16px 20px;
+      margin: 26px 0;
+      font-family: "Lora", Georgia, serif;
+      font-style: italic;
+      font-size: 1.18rem;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    /* passos */
+    .steps { counter-reset: step; margin: 24px 0 8px; padding: 0; list-style: none; }
+    .steps li {
+      position: relative;
+      padding: 0 0 22px 56px;
+      counter-increment: step;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-family: "Inter", Arial, sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+    .steps li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 42px;
+      bottom: 4px;
+      width: 2px;
+      background: var(--line);
+    }
+    .steps h3 { margin: 4px 0 6px; }
+    .steps p { margin: 0; font-size: 1.02rem; line-height: 1.6; }
+
+    .note {
+      background: #fff8e6;
+      border: 1px solid #f0dca0;
+      border-radius: 4px;
+      padding: 14px 18px;
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #5a4a14;
+      margin: 28px 0;
+    }
+    .note strong { color: #3f340c; }
+
+    .tags {
+      margin: 30px 0 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tags span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--soft);
+      background: var(--wash);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 11px;
+    }
+
+    .share {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .footer {
+      background: var(--ink);
+      color: #b6b6b6;
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+    .footer__inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 26px 22px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: #cfd8e6; }
+
+    @media (max-width: 600px) {
+      .article { padding: 26px 20px 30px; }
+      .nav { display: none; }
+      .body p { font-size: 1.04rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="subbar">
+      <div class="subbar__inner">
+        <span>Carreira &amp; Mercado Fitness</span>
+        <span id="today"></span>
+      </div>
+    </div>
+    <div class="masthead__bar">
+      <div class="brand">
+        <span class="brand__mark">T</span>
+        <span class="brand__name">Treino <span>&amp; Carreira</span></span>
+      </div>
+      <nav class="nav">
+        <a href="#">Mercado</a>
+        <a href="#">Carreira</a>
+        <a href="#">Treinamento</a>
+        <a href="#">Negócios</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="article">
+      <div class="crumb"><span class="cat">CARREIRA</span> &nbsp;•&nbsp; Profissão Personal Trainer</div>
+
+      <h1 class="headline">Como personal trainers estão lotando a agenda sem depender só da indicação boca a boca</h1>
+
+      <p class="standfirst">
+        Enquanto muitos profissionais ainda esperam o telefone tocar, uma parte crescente do mercado adotou um método simples e organizado para atrair alunos de forma previsível. Entenda o passo a passo que tem mudado a rotina de quem vive da profissão.
+      </p>
+
+      <div class="byline">
+        <div class="byline__avatar">RC</div>
+        <div class="byline__meta">
+          <strong>Por Redação Treino &amp; Carreira</strong><br />
+          <span>Editoria de Carreira &amp; Mercado Fitness · Leitura de 6 min</span>
+        </div>
+      </div>
+
+      <figure>
+        <img src="img/hero.jpg" alt="Personal trainer orientando aluno durante treino de força" loading="eager" width="1280" height="720" />
+        <figcaption>Profissionais que organizam a captação de alunos relatam agendas mais estáveis ao longo do ano. (Imagem ilustrativa)</figcaption>
+      </figure>
+
+      <div class="body">
+        <p class="lead">
+          Durante anos, a regra para quem trabalhava como personal trainer parecia simples: fazer um bom trabalho, conquistar a confiança do aluno e esperar que ele recomendasse o serviço para amigos e familiares. O boca a boca funcionava — mas era lento, imprevisível e deixava a renda do profissional refém da sorte.
+        </p>
+
+        <p>
+          Nos últimos anos, porém, esse cenário começou a mudar. Personal trainers de academias, condomínios e atendimentos online passaram a tratar a captação de alunos como uma parte estruturada do próprio trabalho, e não como algo que acontece por acaso. O resultado, segundo relatos de profissionais da área, é uma agenda mais cheia e previsível ao longo do ano.
+        </p>
+
+        <p class="pull">
+          “O erro mais comum é achar que aluno bom só chega por indicação. Quando você organiza o processo, percebe que a maioria das pessoas só precisava de um convite claro.”
+        </p>
+
+        <p>
+          A lógica por trás dessa mudança é menos sobre técnica de treino e mais sobre <strong>processo</strong>. Em vez de esperar passivamente, o profissional cria pontos de contato com pessoas que já têm interesse em treinar, mostra autoridade no assunto e facilita a decisão de começar. Veja, na prática, como esse método costuma ser dividido.
+        </p>
+
+        <figure class="inline">
+          <img src="img/treino.jpg" alt="Sessão de treino em academia com acompanhamento profissional" loading="lazy" width="1100" height="619" />
+          <figcaption>Organizar a captação com a mesma seriedade do plano de treino é o que separa agendas cheias de agendas instáveis. (Imagem ilustrativa)</figcaption>
+        </figure>
+
+        <h2>O passo a passo que tem lotado agendas</h2>
+
+        <ol class="steps">
+          <li>
+            <h3>Defina exatamente para quem você treina</h3>
+            <p>Personal trainers que tentam atender “qualquer pessoa” costumam ter mais dificuldade para se destacar. Escolher um público específico — emagrecimento, reabilitação, mulheres acima dos 40, atletas amadores — torna o discurso mais claro e a indicação mais natural.</p>
+          </li>
+          <li>
+            <h3>Mostre resultado antes de pedir o contrato</h3>
+            <p>Antes de cobrar, o profissional entrega valor: dicas práticas, conteúdo simples nas redes, uma avaliação inicial bem feita. Isso constrói confiança e prova que a pessoa está diante de alguém que entende do assunto.</p>
+          </li>
+          <li>
+            <h3>Crie uma porta de entrada fácil</h3>
+            <p>Em vez de empurrar o pacote mais caro logo de cara, oferecer uma primeira experiência acessível — uma aula avaliação, um diagnóstico, uma semana de teste — reduz a barreira para o aluno dizer “sim”.</p>
+          </li>
+          <li>
+            <h3>Tenha um convite claro e repetido</h3>
+            <p>Muita gente quer treinar, mas nunca foi convidada de forma objetiva. Ter uma mensagem simples, com próximo passo evidente, transforma interessados em alunos pagantes.</p>
+          </li>
+          <li>
+            <h3>Acompanhe e peça indicação na hora certa</h3>
+            <p>O acompanhamento de resultados não serve só para o aluno evoluir — é também o momento ideal para pedir que ele indique alguém. Aí, sim, o boca a boca volta a funcionar, mas de forma planejada.</p>
+          </li>
+        </ol>
+
+        <div class="note">
+          <strong>Vale lembrar:</strong> não existe fórmula mágica. Os profissionais que relatam melhores resultados são justamente os que aplicam o processo com constância, ajustam o que não funciona e mantêm a qualidade do atendimento como prioridade.
+        </div>
+
+        <h2>Por que isso funciona</h2>
+
+        <figure class="inline">
+          <img src="img/atendimento.jpg" alt="Personal trainer conversando com aluna durante avaliação" loading="lazy" width="1100" height="619" />
+          <figcaption>A primeira experiência bem conduzida — uma avaliação ou aula diagnóstica — reduz a barreira para o aluno começar. (Imagem ilustrativa)</figcaption>
+        </figure>
+
+        <p>
+          A explicação é mais simples do que parece. Quando o personal trainer deixa de depender exclusivamente do acaso e passa a controlar o início da jornada do aluno, ele reduz os meses de “agenda vazia” que costumam assustar quem vive da profissão. Em vez de oscilar entre períodos cheios e períodos parados, o profissional ganha previsibilidade.
+        </p>
+
+        <p>
+          Especialistas em mercado fitness apontam que a maior parte dos personal trainers nunca aprendeu a parte comercial da profissão — formaram-se em educação física, dominam o treino, mas nunca tiveram orientação sobre como atrair e converter alunos de forma organizada. É justamente nesse ponto que o método tem feito diferença.
+        </p>
+
+        <p>
+          A boa notícia é que nenhuma das etapas exige grandes investimentos ou conhecimento técnico avançado de marketing. O que muda, segundo quem aplica, é o hábito de tratar a captação com a mesma seriedade com que se trata um plano de treino.
+        </p>
+
+        <div class="tags">
+          <span>personal trainer</span>
+          <span>carreira fitness</span>
+          <span>captação de alunos</span>
+          <span>agenda cheia</span>
+          <span>mercado fitness</span>
+        </div>
+
+        <div class="share">
+          Reportagem da Redação Treino &amp; Carreira. Este conteúdo tem caráter informativo e não substitui orientação profissional individualizada.
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>© <span id="year"></span> Portal Treino &amp; Carreira — Conteúdo sobre mercado e profissão fitness.</div>
+      <div><a href="#">Sobre</a> · <a href="#">Contato</a> · <a href="#">Política editorial</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var meses = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+      var d = new Date();
+      var el = document.getElementById("today");
+      if (el) el.textContent = d.getDate() + " de " + meses[d.getMonth()] + " de " + d.getFullYear();
+      var y = document.getElementById("year");
+      if (y) y.textContent = d.getFullYear();
+    })();
+  </script>
+</body>
+</html>
