@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Sistema Personal Magnético - O Fim da Agenda Vazia. Aula gratuita para personal trainers que querem lotar a agenda com um sistema simples de captação." />
+  <title>SPM - O Fim da Agenda Vazia</title>
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '817406241224426');
+    fbq('track', 'PageView');
+  </script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wx7at1zer8");
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=817406241224426&ev=PageView&noscript=1"
+  /></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #030306;
+      --panel: rgba(8, 12, 24, 0.82);
+      --line: rgba(26, 140, 255, 0.18);
+      --text: #ffffff;
+      --muted: #7a7f94;
+      --accent: #1a8cff;
+      --cta: #1a8cff;
+      --cta-hover: #3da0ff;
+      --danger: #ff6b6b;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      min-height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    button, input, select { font: inherit; }
+    button { border: 0; cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      position: relative;
+      display: flex;
+      min-height: 100vh;
+      min-height: 100svh;
+      flex-direction: column;
+      overflow-x: hidden;
+      animation: fadeIn 600ms ease both;
+    }
+
+    .page::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 50% 0%, rgba(26, 140, 255, 0.08), transparent),
+        radial-gradient(ellipse 500px 500px at 20% 80%, rgba(26, 140, 255, 0.04), transparent),
+        radial-gradient(ellipse 400px 300px at 85% 60%, rgba(26, 140, 255, 0.03), transparent);
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 2;
+      flex: 0 0 auto;
+      border-bottom: 1px solid rgba(26, 140, 255, 0.1);
+    }
+
+    .topbar__inner {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 8px 18px;
+      color: var(--muted);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+      flex-wrap: wrap;
+    }
+
+    .topbar__dot {
+      width: 6px;
+      height: 6px;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(26, 140, 255, 0.6);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      flex: 1;
+      min-height: 0;
+      place-items: center;
+      padding: 18px 18px 18px;
+    }
+
+    .shell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 340px;
+      max-width: calc(100vw - 40px);
+      min-width: 0;
+      gap: 16px;
+    }
+
+    .copy {
+      text-align: center;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .headline {
+      margin: 0;
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-weight: 400;
+      line-height: 0.86;
+      text-transform: uppercase;
+    }
+
+    .headline__top {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: clamp(1.6rem, 6vw, 2.3rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+
+    .headline__accent {
+      color: var(--accent);
+    }
+
+    .headline__main {
+      display: block;
+      color: var(--text);
+      font-size: clamp(2.9rem, 12vw, 4.4rem);
+      letter-spacing: -0.01em;
+    }
+
+    .headline__main span {
+      color: var(--accent);
+    }
+
+    .sub-headline {
+      max-width: 320px;
+      margin: 10px auto 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .capture-card {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      box-shadow:
+        0 0 0 1px rgba(26, 140, 255, 0.05),
+        0 32px 80px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(24px);
+      overflow: hidden;
+    }
+
+    .event-strip {
+      display: grid;
+      gap: 2px;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(26, 140, 255, 0.14);
+      background: rgba(26, 140, 255, 0.08);
+      text-align: center;
+    }
+
+    .event-strip__label {
+      color: rgba(255, 255, 255, 0.48);
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .event-strip__live {
+      color: var(--danger);
+    }
+
+    .event-strip__rec {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 3px;
+      border-radius: 999px;
+      background: var(--danger);
+      box-shadow: 0 0 6px rgba(255, 107, 107, 0.7);
+      vertical-align: middle;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    .event-strip__time {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .form {
+      padding: 16px 18px 16px;
+    }
+
+    .step__eyebrow {
+      margin: 0 0 5px;
+      color: var(--accent);
+      font-size: 0.64rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .step__title {
+      margin: 0;
+      color: var(--text);
+      font-size: 1.04rem;
+      font-weight: 900;
+      line-height: 1.18;
+      text-align: center;
+    }
+
+    .step__text {
+      margin: 6px 0 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.74rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .field {
+      margin-top: 12px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.66rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .input,
+    .select {
+      width: 100%;
+      height: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 700;
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .input {
+      padding: 0 15px;
+    }
+
+    .select {
+      padding: 0 38px 0 15px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .input:focus,
+    .select:focus {
+      border-color: rgba(26, 140, 255, 0.6);
+      box-shadow: 0 0 0 3px rgba(26, 140, 255, 0.1);
+    }
+
+    .input::placeholder {
+      color: rgba(255, 255, 255, 0.22);
+    }
+
+    .select option {
+      background: #0a0e1a;
+      color: var(--text);
+    }
+
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper::after {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      color: rgba(255, 255, 255, 0.35);
+      content: "v";
+      font-size: 0.82rem;
+      font-weight: 900;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .button {
+      display: flex;
+      width: 100%;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      border-radius: 12px;
+      background: var(--cta);
+      box-shadow: 0 12px 32px rgba(26, 140, 255, 0.25);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease, opacity 180ms ease;
+      cursor: pointer;
+      border: 0;
+    }
+
+    .button:not(:disabled):hover,
+    .button:not(:disabled):focus-visible {
+      background: var(--cta-hover);
+      box-shadow: 0 16px 40px rgba(26, 140, 255, 0.35);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .button:disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .button.is-sending {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    .scarcity-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 107, 107, 0.06);
+    }
+
+    .scarcity-bar__dot {
+      width: 6px;
+      height: 6px;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      background: var(--danger);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    .scarcity-bar__text {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.66rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .scarcity-bar__text strong {
+      color: var(--danger);
+    }
+
+    .error {
+      min-height: 16px;
+      margin: 5px 0 0;
+      color: var(--danger);
+      font-size: 0.7rem;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .hidden {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (min-width: 860px) {
+      .hero { padding: 40px 28px 30px; }
+      .shell { width: 440px; max-width: 440px; gap: 28px; }
+      .headline__main { font-size: clamp(5rem, 7vw, 6rem); }
+    }
+
+    @media (max-height: 730px) {
+      .topbar__inner { padding-top: 6px; padding-bottom: 6px; }
+      .hero { padding-top: 12px; padding-bottom: 10px; }
+      .shell { gap: 12px; }
+      .sub-headline { margin-top: 7px; font-size: 0.72rem; }
+      .headline__main { font-size: clamp(2.6rem, 11vw, 3.4rem); }
+      .capture-card { border-radius: 12px; }
+      .form { padding: 12px 14px 12px; }
+      .event-strip { padding: 8px 14px; }
+      .input, .select { height: 46px; }
+      .field { margin-top: 9px; }
+      .button { min-height: 48px; margin-top: 11px; }
+    }
+
+    @media (max-width: 390px) {
+      .topbar__inner { font-size: 0.56rem; letter-spacing: 0.14em; }
+      .hero { padding-right: 14px; padding-left: 14px; }
+      .shell { width: calc(100vw - 36px); }
+      .headline__top { font-size: 1.4rem; }
+      .headline__main { font-size: 2.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar" aria-label="Informações da aula ao vivo">
+      <div class="topbar__inner">
+        <span class="topbar__dot" aria-hidden="true"></span>
+        <span id="topbarText">Segunda-feira · 20h · Ao vivo</span>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="main-title">
+      <div class="shell">
+        <div class="copy">
+          <h1 id="main-title" class="headline">
+            <span class="headline__top">O <span class="headline__accent">Fim</span> da</span>
+            <span class="headline__main">Agenda <span>Vazia</span></span>
+          </h1>
+
+          <p class="sub-headline">O método de 3 passos que personais comuns usam para faturar R$5.000 a R$10.000/mês — sem seguidores, sem postar todo dia e sem depender de academia.</p>
+        </div>
+
+        <div class="capture-card">
+          <div class="event-strip" aria-label="Data e horario da aula">
+            <span class="event-strip__label">Aula gratuita <span class="event-strip__live"><span class="event-strip__rec" aria-hidden="true"></span>ao vivo</span></span>
+            <strong class="event-strip__time" id="eventDate">Próxima segunda-feira, 20h</strong>
+          </div>
+
+          <form class="form" name="personal-captura" id="captureForm" novalidate>
+            <p class="step__eyebrow">Leva menos de 15 segundos</p>
+            <h2 class="step__title" id="step1-title">Garanta sua vaga e entre no grupo</h2>
+            <p class="step__text">O link da aula é enviado apenas pelo grupo do WhatsApp.</p>
+
+            <p class="hidden" aria-hidden="true">
+              <label>Não preencha este campo: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
+
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input class="input" id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Seu nome" required />
+            </div>
+
+            <div class="field">
+              <label for="alunos">Quantos alunos você atende hoje?</label>
+              <div class="select-wrapper">
+                <select class="select" id="alunos" name="alunos" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option value="Ainda não tenho alunos">Ainda não tenho alunos</option>
+                  <option value="De 1 a 3 alunos">De 1 a 3 alunos</option>
+                  <option value="De 4 a 7 alunos">De 4 a 7 alunos</option>
+                  <option value="8 ou mais alunos">8 ou mais alunos</option>
+                  <option value="Pretendo começar como personal">Pretendo começar como personal</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="button" type="submit" id="submitButton" disabled>Entrar no grupo do WhatsApp</button>
+            <p class="error" id="formError" aria-live="polite"></p>
+
+            <div class="scarcity-bar">
+              <span class="scarcity-bar__dot" aria-hidden="true"></span>
+              <span class="scarcity-bar__text"><strong>Vagas limitadas.</strong> O grupo fecha quando atingir o limite.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("captureForm");
+    const submitButton = document.getElementById("submitButton");
+    const alunosSelect = document.getElementById("alunos");
+    const whatsappGroupUrl = "https://chat.whatsapp.com/LYYkFi9ca5M1xrqTsuhzpe";
+    const webhookUrl = "https://n8n-n8n.7b7hsj.easypanel.host/webhook/personal-captura";
+    let leadSent = false;
+    let submitting = false;
+
+    const landingTimestamp = Date.now();
+    const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"];
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmData = {};
+    utmKeys.forEach((key) => {
+      const val = urlParams.get(key);
+      if (val) utmData[key] = val;
+    });
+    if (utmData.fbclid) {
+      utmData.fbc = "fb.1." + landingTimestamp + "." + utmData.fbclid;
+      try {
+        document.cookie = "_fbc=" + utmData.fbc + ";max-age=7776000;path=/;SameSite=Lax";
+      } catch (e) {}
+    } else {
+      try {
+        const fbcMatch = document.cookie.match(/(?:^|;\s*)_fbc=(fb\.\d+\.\d+\..+?)(?:;|$)/);
+        if (fbcMatch) utmData.fbc = fbcMatch[1];
+      } catch (e) {}
+    }
+    utmData.landing_timestamp = String(landingTimestamp);
+    utmData.utm_referrer = document.referrer || "";
+    utmData.referrer = document.referrer || "";
+    try {
+      const ga = document.cookie.match(/_ga=GA\d+\.\d+\.(.+?)(?:;|$)/);
+      if (ga) utmData.gclientid = ga[1];
+    } catch (e) {}
+    try {
+      const fbpMatch = document.cookie.match(/(?:^|;\s*)_fbp=(fb\.\d+\.\d+\.\d+)/);
+      if (fbpMatch) utmData.fbp = fbpMatch[1];
+    } catch (e) {}
+
+    // --- Countdown & dynamic date ---
+
+    const MESES_PT = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+
+    function getNextMondayBRT() {
+      const now = new Date();
+      const brt = new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+      const brtOffset = brt.getTime() - now.getTime();
+      const target = new Date(brt);
+      target.setHours(20, 0, 0, 0);
+      const day = brt.getDay();
+      if (day === 1 && brt < target) {
+        // today is Monday before 20h
+      } else {
+        const daysUntilMonday = (8 - day) % 7 || 7;
+        target.setDate(target.getDate() + daysUntilMonday);
+      }
+      const targetUTC = new Date(target.getTime() - brtOffset);
+      return { targetUTC, targetBRT: target };
+    }
+
+    function updateEventDate() {
+      const { targetBRT } = getNextMondayBRT();
+      const el = document.getElementById("eventDate");
+      const now = new Date();
+      const brt = new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+      const day = brt.getDay();
+      const before20 = brt.getHours() < 20;
+      if (day === 1 && before20) {
+        el.textContent = "Hoje às 20h — sua vaga ainda está disponível";
+      } else {
+        el.textContent = "Segunda-feira, " + targetBRT.getDate() + " de " + MESES_PT[targetBRT.getMonth()] + ", às 20h";
+      }
+    }
+
+    updateEventDate();
+
+    // --- Bot-resistant button gating: button só libera após selecionar alunos ---
+
+    function refreshButtonState() {
+      const ready = alunosSelect.value !== "";
+      submitButton.disabled = !ready || submitting;
+    }
+
+    alunosSelect.addEventListener("change", refreshButtonState);
+    refreshButtonState();
+
+    // --- Capture ---
+
+    async function sha256(str) {
+      const data = new TextEncoder().encode(str.trim().toLowerCase());
+      const buf = await crypto.subtle.digest("SHA-256", data);
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    function setError(message) {
+      document.getElementById("formError").textContent = message || "";
+    }
+
+    function leadPayload() {
+      const qualification = alunosSelect.value;
+      const params = new URLSearchParams();
+      params.set("nome", form.nome.value.trim());
+      params.set("alunos", qualification);
+      params.set("pergunta", qualification);
+      params.set("status", "completo");
+      params.set("origem", "personalmagnetico-aula");
+      params.set("evento", "SPM - O Fim da Agenda Vazia");
+      params.set("timestamp", new Date().toISOString());
+      params.set("event_source_url", window.location.href.split("?")[0]);
+      params.set("modo", "single_step_capture");
+      Object.entries(utmData).forEach(([key, val]) => params.set(key, val));
+      return params;
+    }
+
+    function submitToWebhook(params) {
+      return fetch(webhookUrl, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+    }
+
+    async function submitLead(eventId) {
+      if (leadSent) return;
+      const params = leadPayload();
+      params.set("event_id", eventId);
+      const firstName = form.nome.value.trim().split(" ")[0];
+      if (firstName) params.set("fn_hash", await sha256(firstName));
+      try {
+        await submitToWebhook(params);
+      } catch (e) {}
+      leadSent = true;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (submitting) return;
+
+      // honeypot: bot preencheu campo oculto -> aborta silenciosamente
+      if (form["bot-field"] && form["bot-field"].value) return;
+
+      const name = form.nome.value.trim();
+      if (name.length < 2) {
+        setError("Digite seu nome para liberar o grupo.");
+        form.nome.focus({ preventScroll: true });
+        return;
+      }
+      if (alunosSelect.value === "") {
+        setError("Selecione quantos alunos você atende hoje.");
+        return;
+      }
+      setError("");
+
+      submitting = true;
+      submitButton.disabled = true;
+      submitButton.classList.add("is-sending");
+      submitButton.textContent = "Entrando...";
+
+      const eventId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
+      await submitLead(eventId);
+
+      if (typeof fbq === "function") {
+        fbq("track", "Lead", {}, { eventID: eventId });
+      }
+
+      window.location.href = whatsappGroupUrl;
+    });
+  </script>
+</body>
+</html>
